@@ -98,7 +98,8 @@ def ask(history, user_message):
     return answer
 
 
-st.title("Shoaib-rawn")
+st.title("Raan-fashion-rebort")
+
 st.caption("Your AI fashion stylist for men and women: Pakistani, international and fusion looks for every event.")
 
 if "history" not in st.session_state:
@@ -119,13 +120,19 @@ for msg in st.session_state.history:
 clicked = None
 if not st.session_state.history:
     with st.chat_message("assistant", avatar=AVATAR):
-        st.markdown("Assalam o Alaikum! I'm **Shoaib-rawn**, your AI stylist. Tell me your event and I'll put a look together. Or try one of these:")
-    examples = [("Barat guest (men)", "What should a man wear to a barat as a guest in winter?"),
-                ("Mehndi look (women)", "Suggest a mehndi outfit for a woman for an evening event, mid-range budget."),
-                ("Tie with kurta?", "Can I wear a tie or a pocket square with a kurta or shalwar kameez?")]
-    for col, (label, question) in zip(st.columns(len(examples)), examples):
-        if col.button(label, use_container_width=True):
-            clicked = question
+        st.markdown("Assalam o Alaikum! I'm **Shoaib-rawn**, your AI stylist. Tell me your event and I'll put a look together, or pick one below:")
+    examples = [
+        ("🤵", "Barat guest (men)", "What should a man wear to a barat as a guest in winter?"),
+        ("🌼", "Mehndi look", "Suggest a mehndi outfit for a woman and a man for an evening event, mid-range budget."),
+        ("✨", "Walima look", "Suggest elegant walima outfits for a woman and a man for an evening reception, mid-range budget."),
+        ("✈️", "Airport look", "Suggest a comfortable but stylish airport outfit for a long international flight, for men and women."),
+        ("🌙", "Eid look", "Suggest Eid outfits for men and women for a summer Eid, from morning prayers to family visits."),
+        ("💼", "Job interview", "What should I wear to a job interview at a corporate office? Give options for men and women."),
+    ]
+    with st.container(horizontal=True):
+        for icon, label, question in examples:
+            if st.button(label, icon=icon):
+                clicked = question
 
 prompt = st.chat_input("Ask about any outfit or event...") or clicked
 if prompt:
