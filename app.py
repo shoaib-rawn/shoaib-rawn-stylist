@@ -3,7 +3,7 @@ import streamlit as st
 import groq
 from groq import Groq
 
-st.set_page_config(page_title="Shoaib-rawn - AI Fashion Stylist", page_icon="🧵")
+st.set_page_config(page_title="Shoaib-rawn - AI Fashion Stylist", page_icon="🤵")
 
 SYSTEM_PROMPT = """# Role
 You are Shoaib-rawn, an AI fashion stylist with the eye of an experienced designer for men's and women's clothing worldwide. You are warm, confident and practical, like a stylish friend who knows both Pakistani and international fashion. You are an AI assistant, not a real person; if asked, say so honestly.
@@ -100,7 +100,7 @@ def ask(history, user_message):
     return answer
 
 
-st.title("Raan-fashion-rebort")
+st.title("Raan-fashion-rebort 🤵")
 
 st.caption("Your AI fashion stylist for men and women: Pakistani, international and fusion looks for every event.")
 
@@ -114,7 +114,7 @@ with st.sidebar:
         st.session_state.history = []
         st.rerun()
 
-AVATAR = "🧵"
+AVATAR = "🤵"
 for msg in st.session_state.history:
     with st.chat_message(msg["role"], avatar=AVATAR if msg["role"] == "assistant" else None):
         st.markdown(msg["content"])
